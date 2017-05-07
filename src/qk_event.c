@@ -1,5 +1,5 @@
 /******************************************************************************
- * Quantitative Kit Library                                               *
+ * Quantitative Kit Library                                                   *
  *                                                                            *
  * Copyright (C) 2017 Xiaojun Gao                                             *
  *                                                                            *
@@ -8,19 +8,15 @@
  * License 1.0. See accompanying files LICENSE and LICENSE_ALTERNATIVE.       *
  ******************************************************************************/
 
-#ifndef QK_VERSION_H
-#define QK_VERSION_H
+#include "qk_internal.h"
+#include <inttypes.h>
 
-// Quantitative Trading Library
+void qk_event_free(qk_event_t *e) { free(e); }
 
-#define QK_VERSION_MAJOR 1
-#define QK_VERSION_MINOR 11
-#define QK_VERSION_PATCH 1
-#define QK_VERSION_IS_RELEASE 0
-#define QK_VERSION_SUFFIX "dev"
-
-#define QK_VERSION_HEX  ((QK_VERSION_MAJOR << 16) | \
-                         (QK_VERSION_MINOR <<  8) | \
-                         (QK_VERSION_PATCH))
-
-#endif // QK_VERSION_H
+void process_events(qk_event_t *e)
+{
+    char dst[512];
+    //long gmoffset = qk_get_timezone_offset();
+    datetime_format(dst, sizeof(dst), e->timestamp, 0);
+    printf("process_event index = %"PRIu64" %s\n", e->index, dst);
+}

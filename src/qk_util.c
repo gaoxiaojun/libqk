@@ -1,5 +1,5 @@
 /******************************************************************************
- * Quantitative Kit Library                                               *
+ * Quantitative Kit Library                                                   *
  *                                                                            *
  * Copyright (C) 2017 Xiaojun Gao                                             *
  *                                                                            *
@@ -8,19 +8,15 @@
  * License 1.0. See accompanying files LICENSE and LICENSE_ALTERNATIVE.       *
  ******************************************************************************/
 
-#ifndef QK_VERSION_H
-#define QK_VERSION_H
+#include "qk_internal.h"
 
-// Quantitative Trading Library
+size_t size_of_struct[] = {sizeof(qk_cycle_t), sizeof(qk_timer_t),
+                           sizeof(qk_queue_t)};
 
-#define QK_VERSION_MAJOR 1
-#define QK_VERSION_MINOR 11
-#define QK_VERSION_PATCH 1
-#define QK_VERSION_IS_RELEASE 0
-#define QK_VERSION_SUFFIX "dev"
+size_t size_of_event[] = {
 
-#define QK_VERSION_HEX  ((QK_VERSION_MAJOR << 16) | \
-                         (QK_VERSION_MINOR <<  8) | \
-                         (QK_VERSION_PATCH))
+};
 
-#endif // QK_VERSION_H
+size_t qk_size(qk_struct_type type) {
+  return size_of_struct[type];
+}

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Quantitative Trading Library                                               *
+ * Quantitative Kit Library                                               *
  *                                                                            *
  * Copyright (C) 2017 Xiaojun Gao                                             *
  *                                                                            *
@@ -470,7 +470,7 @@ qk_timezone_update(void)
 
 long qk_get_timezone_offset(void)
 {
-    time_t sec;
+    time_t sec = time(NULL);
     struct tm tm;
     qk_timezone_update();
     localtime_r(&sec, &tm);

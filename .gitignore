@@ -1,4 +1,6 @@
 *.swp
+*.out
+*.out.dSYM
 *.[oa]
 *.l[oa]
 *.opensdf
